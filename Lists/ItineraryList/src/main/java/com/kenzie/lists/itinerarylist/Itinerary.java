@@ -33,7 +33,7 @@ public class Itinerary {
      */
     public Destination getDestination(int position) {
         // Implement the method here
-        return getDestination(position);
+        return destinations.get(position);
     }
 
     /**

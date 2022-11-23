@@ -231,7 +231,7 @@ public class ATAStringBuilder {
     //CHECKSTYLE:OFF:OverloadMethodsDeclarationOrder
     public ATAStringBuilder insert(int offset, String str) {
         // PARTICIPANTS - implement here
-        if (offset > str.length() || offset < 0 ) {
+        if (offset > str.length() && offset < 0 ) {
             throw new IndexOutOfBoundsException("offset value can not be less than 0 or longer than the string");
         }
         char[] ch = str.toCharArray();

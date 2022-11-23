@@ -17,7 +17,7 @@ public class CustomerServiceSpendTest {
     private LocalDate nedflixJoinDate;
 
     @BeforeEach
-    private void setup() throws ParseException {
+    public void setup() throws ParseException {
         nedflixJoinDate = LocalDate.of(2008, 11, 1);
         nedflix = new Customer("nedflix", nedflixJoinDate);
         nedflixCustomerServiceSpend = new CustomerServiceSpend(nedflix, nedflixSagemakerSpend);
@@ -30,10 +30,14 @@ public class CustomerServiceSpendTest {
         CustomerServiceSpend equalCustomerServiceSpend = new CustomerServiceSpend(equalNedflix, nedflixSagemakerSpend);
 
         // WHEN
-
+        int result = nedflixCustomerServiceSpend.compareTo(equalCustomerServiceSpend);
 
         // THEN
-        fail("Not implemented");
+        assertTrue(result == 0,
+                String.format("Expected %s to equal %s",
+                        nedflixCustomerServiceSpend,
+                        equalCustomerServiceSpend)
+        );
     }
 
     @Test
@@ -43,10 +47,14 @@ public class CustomerServiceSpendTest {
         CustomerServiceSpend laterCustomerServiceSpend = new CustomerServiceSpend(laterCustomer, nedflixSagemakerSpend);
 
         // WHEN
-
+        int result = nedflixCustomerServiceSpend.compareTo(laterCustomerServiceSpend);
 
         // THEN
-        fail("Not implemented");
+        assertTrue(result < 0,
+                String.format("Expected %s to come before %s",
+                        nedflixCustomerServiceSpend,
+                        laterCustomerServiceSpend)
+        );
     }
 
     @Test
@@ -54,12 +62,15 @@ public class CustomerServiceSpendTest {
         // GIVEN
         Customer earlierCustomer = new Customer("flixned", nedflixJoinDate);
         CustomerServiceSpend earlierCustomerServiceSpend = new CustomerServiceSpend(earlierCustomer, nedflixSagemakerSpend);
-
         // WHEN
-
+        int result = nedflixCustomerServiceSpend.compareTo(earlierCustomerServiceSpend);
 
         // THEN
-        fail("Needs implemented");
+        assertTrue(result > 0,
+                String.format("Expected %s to come after %s",
+                        nedflixCustomerServiceSpend,
+                        earlierCustomerServiceSpend)
+        );
     }
 
     @Test

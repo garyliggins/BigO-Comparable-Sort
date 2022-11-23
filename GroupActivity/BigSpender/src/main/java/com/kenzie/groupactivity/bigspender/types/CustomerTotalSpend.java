@@ -9,7 +9,7 @@ import java.util.Objects;
  *
  * May seem like a special case of AWSCustomerSpendReportGkj, but that's tied to a particular service.
  */
-public class CustomerTotalSpend {
+public class CustomerTotalSpend  {
     private Customer customer;
     private long totalSpend;
     private List<ServiceSpend> serviceSpends;
@@ -43,6 +43,10 @@ public class CustomerTotalSpend {
         return new ArrayList<>(serviceSpends);
     }
 
+
+
+
+
     @Override
     public String toString() {
         return "CustomerTotalSpend{" +
@@ -69,6 +73,8 @@ public class CustomerTotalSpend {
         return totalSpend == that.totalSpend &&
             Objects.equals(customer, that.customer);
     }
+
+
 
     @Override
     public int hashCode() {

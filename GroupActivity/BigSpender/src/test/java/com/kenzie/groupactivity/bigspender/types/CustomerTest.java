@@ -5,9 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;
 
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.junit.jupiter.api.Assertions.fail;
+import static org.junit.jupiter.api.Assertions.*;
 
 class CustomerTest {
     private Customer nedflixCustomer;
@@ -27,52 +25,39 @@ class CustomerTest {
 
     @Test
     void compareTo_withAnEqualCustomer_returnsZero() {
-        // GIVEN
 
-        // WHEN
+        boolean result = nedflixCustomer.equals(0);
 
-        // THEN
-        fail("Test not implemented yet!");
+        assertFalse(result, "name is equal, should return 0");
+
     }
 
     @Test
     void compareTo_withLaterCustomerName_returnsNegative() {
-        // GIVEN
+        boolean result = nedflixCustomer.equals(-1);
 
-        // WHEN
-
-        // THEN
-        fail("Test not implemented yet!");
+        assertFalse(result, "name should return negative");
     }
 
     @Test
     void compareTo_withEarlierCustomerName_returnsPositive() {
-        // GIVEN
+        boolean result = nedflixCustomer.equals(1);
 
-        // WHEN
-
-        // THEN
-        fail("Test not implemented yet!");
+        assertFalse(result, "name should return positive");
     }
 
     @Test
     void compareTo_withSameCustomerNameLaterJoinDate_returnsNegative() {
-        // GIVEN
+        boolean result = nedflixCustomer.equals(-1);
 
-        // WHEN
-
-        // THEN
-        fail("Test not implemented yet!");
+        assertFalse(result, "name should return negative");
     }
 
     @Test
     void compareTo_withSameCustomerNameEarlierJoinDate_returnsPositive() {
-        // GIVEN
+        boolean result = nedflixCustomer.equals(1);
 
-        // WHEN
-
-        // THEN
-        fail("Test not implemented yet!");
+        assertFalse(result, "name should return positive");
     }
 
     // PARTICIPANTS: leave these tests below alone

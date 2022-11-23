@@ -32,8 +32,16 @@ public class ATAStringBuilder {
      */
     public ATAStringBuilder(String initialString) {
         // PARTICIPANTS - initialize here
+        this();
         value = new ArrayList<>();
+        this.append(initialString);
     }
+
+    //method from assignment, should be same as above
+//    public ATAStringBuilder(String initialString) {
+//        this();
+//        this.append(initialString);
+//    }
 
     /**
      * COMPLETION 2
@@ -45,7 +53,7 @@ public class ATAStringBuilder {
      */
     public int length() {
         // PARTICIPANTS - implement here
-        return -1;
+        return value.size();
     }
 
     /**
@@ -63,7 +71,24 @@ public class ATAStringBuilder {
      */
     public ATAStringBuilder append(String str) {
         // PARTICIPANTS - implement here
-        return this;
+
+        if (str == null) {
+            value.add('n');
+            value.add('u');
+            value.add('l');
+            value.add('l');
+        } else {
+            char[] ch = new char[str.length()];
+
+            for (int i = 0; i < str.length(); i++) {
+                ch[i] = str.charAt(i);
+            }
+            for (char c : ch) {
+                value.add(c);
+            }
+
+        }
+            return this;
     }
 
     /**
@@ -82,6 +107,7 @@ public class ATAStringBuilder {
      */
     public ATAStringBuilder insert(int offset, char c) {
         // PARTICIPANTS - implement here
+        value.add(offset, c);
         return this;
     }
 
@@ -102,7 +128,10 @@ public class ATAStringBuilder {
      */
     public char charAt(int index) {
         // PARTICIPANTS - implement here
-        return ' ';
+        if (index > value.get(index) || index < 0 ) {
+            throw new IndexOutOfBoundsException("Denominator cannot be 0.");
+        }
+        return value.get(index);
     }
 
     /**
@@ -124,6 +153,11 @@ public class ATAStringBuilder {
      */
     public ATAStringBuilder setCharAt(int index, char ch) {
         // PARTICIPANTS - implement here
+        if (index > value.get(index) || index < 0 ) {
+            throw new IndexOutOfBoundsException("index value can not be less than 0 or longer than the string");
+        }
+        value.set(index,ch);
+
         return this;
     }
 
@@ -141,6 +175,7 @@ public class ATAStringBuilder {
      */
     public ATAStringBuilder deleteCharAt(int index) {
         // PARTICIPANTS - implement here
+        value.remove(index);
         return this;
     }
     
@@ -157,7 +192,17 @@ public class ATAStringBuilder {
     //CHECKSTYLE:OFF:OverloadMethodsDeclarationOrder
     public ATAStringBuilder append(Object obj) {
         // PARTICIPANTS - implement here
-        return this;
+        String newObjString = String.valueOf(obj);
+        char[] ch = new char[newObjString.length()];
+
+        for (int i = 0; i < newObjString.length(); i++) {
+            ch[i] = newObjString.charAt(i);
+        }
+        for (char c : ch) {
+            value.add(c);
+        }
+
+      return this;
     }
     //CHECKSTYLE:ON:OverloadMethodsDeclarationOrder
     
@@ -186,6 +231,16 @@ public class ATAStringBuilder {
     //CHECKSTYLE:OFF:OverloadMethodsDeclarationOrder
     public ATAStringBuilder insert(int offset, String str) {
         // PARTICIPANTS - implement here
+        if (offset > str.length() || offset < 0 ) {
+            throw new IndexOutOfBoundsException("offset value can not be less than 0 or longer than the string");
+        }
+        char[] ch = str.toCharArray();
+
+        for (char c : ch) {
+            value.add(offset,c);
+            offset++;
+        }
+
         return this;
     }
     //CHECKSTYLE:ON:OverloadMethodsDeclarationOrder
@@ -207,9 +262,16 @@ public class ATAStringBuilder {
      *                                         greater than {@code end}.
      */
     public String substring(int start, int end) {
-        // PARTICIPANTS - implement here
-        return null;
+    String subString = "";
+    if (start > value.size() || start < 0 || end > value.size() || end < 0 || start > end) {
+        throw new IndexOutOfBoundsException("Start value must be greater than or equal to size and end value must be lower or equal to value size");
     }
+    for (int i = start; i < end; i++ ) {
+        subString += charAt(i);
+       }
+       return subString;
+}
+
 
     @Override
     public String toString() {

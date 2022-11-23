@@ -1,6 +1,7 @@
 package com.kenzie.lists.itinerarylist;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -19,7 +20,10 @@ public class Itinerary {
      */
     public void addDestination(Destination destination) {
         // Implement the method here
+        destinations.add(destination);
+
     }
+
 
     /**
      * Get the destination from itinerary based on its position.
@@ -29,7 +33,7 @@ public class Itinerary {
      */
     public Destination getDestination(int position) {
         // Implement the method here
-        return null;
+        return getDestination(position);
     }
 
     /**
@@ -40,7 +44,7 @@ public class Itinerary {
      */
     public Destination removeDestination(int position) {
         // Implement the method here
-        return null;
+        return destinations.remove(position);
     }
 
 
@@ -52,7 +56,11 @@ public class Itinerary {
      */
     public List<String> getListOfLocations() {
         // Implement the method here
-        return new ArrayList<>();
+        List<String> destinationList = new ArrayList<>();
+        for (Destination destination : destinations) {
+            destinationList.add(destination.getLocation());
+        }
+        return destinationList;
     }
 
     /**
@@ -63,16 +71,24 @@ public class Itinerary {
      */
     public int getTotalNumberOfDays() {
         // Implement the method here
-        return -1;
-    }
+        int sum = 0;
+        for (Destination destination : destinations) {
+            sum += destination.getDaysAtLocation();
 
-    /**
-     * Get number of destinations contained in itinerary.
-     *
-     * @return number of destinations contained in itinerary.
-     */
-    public int getNumberOfDestinations() {
-        // Implement the method here
-        return -1;
+        }
+        return sum;
     }
-}
+        /**
+         * Get number of destinations contained in itinerary.
+         *
+         * @return number of destinations contained in itinerary.
+         */
+        public int getNumberOfDestinations () {
+            int sum = 0;
+            for (Destination destination : destinations) {
+                 destination.getLocation();
+                    sum++;
+            }
+            return sum;
+        }
+    }

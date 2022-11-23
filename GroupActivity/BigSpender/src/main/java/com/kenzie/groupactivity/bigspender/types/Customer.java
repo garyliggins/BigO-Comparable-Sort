@@ -6,7 +6,7 @@ import java.util.Objects;
 /**
  * Represents a customer who uses AWS.
  */
-public class Customer {
+public class Customer implements Comparable<Customer>{
     private String name;
     private LocalDate joinDate;
 
@@ -36,27 +36,27 @@ public class Customer {
             '}';
     }
 
+
+
     @Override
     public boolean equals(Object o) {
-        if (o == null) {
-            return false;
-        }
-
-        if (getClass() != o.getClass()) {
-            return false;
-        }
-
-        if (this == o) {
-            return true;
-        }
-
-        Customer that = (Customer) o;
-        return Objects.equals(name, that.name) &&
-            Objects.equals(joinDate, that.joinDate);
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Customer customer = (Customer) o;
+        return Objects.equals(name, customer.name) && Objects.equals(joinDate, customer.joinDate);
     }
 
     @Override
     public int hashCode() {
         return Objects.hash(name, joinDate);
+    }
+
+    @Override
+    public int compareTo(Customer other) {
+        int result = this.name.compareTo(other.name);
+        if (result != 0) {
+            return result;
+        }
+        return this.joinDate.compareTo(other.joinDate);
     }
 }

@@ -1,9 +1,6 @@
-# Kenzie Java Project
+Practice with Big O, Lists,
+Comparable, and sort
 
-Follow the instructions on lms.kenzie.academy to complete this assignment.
-
-
-## Gradle Commands
 
 ### Comparable - UserPageVisit
 
